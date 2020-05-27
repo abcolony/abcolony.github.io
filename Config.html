@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>ABCPython.Config API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>ABCPython.Config</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import sys, getopt
+import configparser
+from deap.benchmarks import *
+import os
+class Config:
+
+    def __init__(_self, argv):
+            config = configparser.ConfigParser()
+            config.read(os.path.dirname(os.path.abspath(__file__))+&#39;/ABC.ini&#39;)
+            #####SETTINGS FILE######
+            _self.OBJECTIVE_FUNCTION = _self.objFunctionSelector.get(config[&#39;DEFAULT&#39;][&#39;ObjectiveFunction&#39;], &#34;Error&#34;)
+            _self.NUMBER_OF_POPULATION = int(config[&#39;DEFAULT&#39;][&#39;NumberOfPopulation&#39;])
+            _self.MAXIMUM_EVALUATION = int(config[&#39;DEFAULT&#39;][&#39;MaximumEvaluation&#39;])
+            _self.LIMIT = int(config[&#39;DEFAULT&#39;][&#39;Limit&#39;])
+            _self.FOOD_NUMBER = int(_self.NUMBER_OF_POPULATION / 2)
+            _self.DIMENSION = int(config[&#39;DEFAULT&#39;][&#39;Dimension&#39;])
+            _self.UPPER_BOUND = float(config[&#39;DEFAULT&#39;][&#39;UpperBound&#39;])
+            _self.LOWER_BOUND = float(config[&#39;DEFAULT&#39;][&#39;LowerBound&#39;])
+            _self.MINIMIZE = bool(config[&#39;DEFAULT&#39;][&#39;Minimize&#39;])
+            _self.RUN_TIME = int(config[&#39;DEFAULT&#39;][&#39;RunTime&#39;])
+            _self.SHOW_PROGRESS = bool(config[&#39;REPORT&#39;][&#39;ShowProgress&#39;]==&#39;True&#39;)
+            _self.PRINT_PARAMETERS = bool(config[&#39;REPORT&#39;][&#39;PrintParameters&#39;]==&#39;True&#39;)
+            _self.RUN_INFO = bool(config[&#39;REPORT&#39;][&#39;RunInfo&#39;]==&#39;True&#39;)
+            _self.RUN_INFO_COMMANDLINE = bool(config[&#39;REPORT&#39;][&#39;CommandLine&#39;]==&#39;True&#39;)
+            _self.SAVE_RESULTS = bool(config[&#39;REPORT&#39;][&#39;SaveResults&#39;]==&#39;True&#39;)
+            _self.RESULT_REPORT_FILE_NAME = config[&#39;REPORT&#39;][&#39;ResultReportFileName&#39;]
+            _self.PARAMETER_REPORT_FILE_NAME = config[&#39;REPORT&#39;][&#39;ParameterReportFileName&#39;]
+            _self.RESULT_BY_CYCLE_FOLDER = config[&#39;REPORT&#39;][&#39;ResultByCycleFolder&#39;]
+            _self.OUTPUTS_FOLDER_NAME = str(config[&#39;REPORT&#39;][&#39;OutputsFolderName&#39;])
+            _self.RANDOM_SEED = config[&#39;SEED&#39;][&#39;RandomSeed&#39;] == &#39;True&#39;
+            _self.SEED = int(config[&#39;SEED&#39;][&#39;Seed&#39;])
+            #####SETTINGS FILE######
+
+            #####SETTINGS ARGUMENTS######
+            try:
+                opts, args = getopt.getopt(argv, &#39;hn:m:t:d:l:u:r:o:&#39;,
+                                           [&#39;help&#39;, &#39;np=&#39;, &#39;max_eval=&#39;,&#39;trial=&#39;, &#39;dim=&#39;, &#39;lower_bound=&#39;, &#39;upper_bound=&#39;, &#39;runtime=&#39;,
+                                            &#39;obj_fun=&#39;,&#39;output_folder=&#39;,&#39;file_name=&#39;,&#39;param_name=&#39;,&#39;res_cycle_folder=&#39;,&#39;show_functions&#39;])
+            except getopt.GetoptError:
+                print(&#39;Usage: ABCAlgorithm.py -h or --help&#39;)
+                sys.exit(2)
+            for opt, arg in opts:
+                if opt in (&#39;-h&#39;, &#39;--help&#39;):
+                    print(&#39;-h or --help : Show Usage&#39;)
+                    print(&#39;-n or --np : Number of Population&#39;)
+                    print(&#39;-m or --max_eval : Maximum Evaluation&#39;)
+                    #print(&#39;-t or --trial : Maximum Trial&#39;)
+                    print(&#39;-d or --dim : Dimension&#39;)
+                    print(&#39;-l or --lower_bound : Lower Bound&#39;)
+                    print(&#39;-u or --upper_bound : Upper Bound&#39;)
+                    print(&#39;-r or --runtime : Run Time&#39;)
+                    print(&#39;-o or --obj_fun : Objective Function&#39;)
+                    print(&#39;--show_functions : Show Objective Functions&#39;)
+                    print(&#39;--output_folder= [DEFAULT: Outputs]&#39;)
+                    print(&#39;--file_name= [DEFAULT: Run_Results.csv]&#39;)
+                    print(&#39;--param_name= [DEFAULT: Param_Results.csv]&#39;)
+                    print(&#39;--res_cycle_folder= [DEFAULT: ResultByCycle]&#39;)
+
+                    sys.exit()
+                elif opt in (&#39;-n&#39;, &#39;--np&#39;):
+                    _self.NUMBER_OF_POPULATION = int(arg)
+                elif opt in (&#39;-m&#39;, &#39;--max_eval&#39;):
+                    _self.MAXIMUM_EVALUATION = int(arg)
+                elif opt in (&#39;-d&#39;, &#39;--dim&#39;):
+                    _self.DIMENSION = int(arg)
+                elif opt in (&#39;-t&#39;, &#39;--trial&#39;):
+                    _self.LIMIT = int(arg)
+                elif opt in (&#39;-l&#39;, &#39;--lower_bound&#39;):
+                    _self.LOWER_BOUND = float(arg)
+                elif opt in (&#39;-u&#39;, &#39;--upper_bound&#39;):
+                    _self.UPPER_BOUND = float(arg)
+                elif opt in (&#39;-r&#39;, &#39;--runtime&#39;):
+                    _self.RUN_TIME = int(arg)
+                elif opt in (&#39;-o&#39;, &#39;--obj_fun&#39;):
+                    _self.OBJECTIVE_FUNCTION = _self.objFunctionSelector.get(arg, &#34;sphere&#34;)
+                elif opt in (&#39;--output_folder&#39;):
+                    _self.OUTPUTS_FOLDER_NAME = arg
+                elif opt in (&#39;--param_name&#39;):
+                    _self.PARAMETER_REPORT_FILE_NAME = arg
+                elif opt in (&#39;--file_name&#39;):
+                    _self.RESULT_REPORT_FILE_NAME = arg
+                elif opt in (&#39;--res_cycle_folder&#39;):
+                    _self.RESULT_BY_CYCLE_FOLDER = arg
+                elif opt in (&#39;--show_functions&#39;):
+                    print(&#34;We use deap.benchmarks functions. Available functions are listed below:&#34;)
+                    for i in _self.objFunctionSelector:
+                        print(i)
+                    sys.exit()
+            #####SETTINGS ARGUMENTS######
+
+    def user_defined_function(individual):
+        return (individual[0] - individual[1]),
+
+    #######FUNCTION_LIST######
+    objFunctionSelector = {
+        &#39;sphere&#39;: sphere,
+        &#39;rastrigin&#39;: rastrigin,
+        &#39;rosenbrock&#39;: rosenbrock,
+        &#39;rand&#39;: rand,
+        &#39;plane&#39;: plane,
+        &#39;cigar&#39;: cigar,
+        &#39;h1&#39;: h1,
+        &#39;ackley&#39;: ackley,
+        &#39;bohachevsky&#39;: bohachevsky,
+        &#39;griewank&#39;: griewank,
+        &#39;rastrigin_scaled&#39;: rastrigin_scaled,
+        &#39;rastrigin_skew&#39;: rastrigin_skew,
+        &#39;schaffer&#39;: schaffer,
+        &#39;schwefel&#39;: schwefel,
+        &#39;himmelblau&#39;: himmelblau,
+        &#39;user_defined&#39;: user_defined_function
+    }
+    #######FUNCTION_LIST######</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="ABCPython.Config.Config"><code class="flex name class">
+<span>class <span class="ident">Config</span></span>
+<span>(</span><span>argv)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Config:
+
+    def __init__(_self, argv):
+            config = configparser.ConfigParser()
+            config.read(os.path.dirname(os.path.abspath(__file__))+&#39;/ABC.ini&#39;)
+            #####SETTINGS FILE######
+            _self.OBJECTIVE_FUNCTION = _self.objFunctionSelector.get(config[&#39;DEFAULT&#39;][&#39;ObjectiveFunction&#39;], &#34;Error&#34;)
+            _self.NUMBER_OF_POPULATION = int(config[&#39;DEFAULT&#39;][&#39;NumberOfPopulation&#39;])
+            _self.MAXIMUM_EVALUATION = int(config[&#39;DEFAULT&#39;][&#39;MaximumEvaluation&#39;])
+            _self.LIMIT = int(config[&#39;DEFAULT&#39;][&#39;Limit&#39;])
+            _self.FOOD_NUMBER = int(_self.NUMBER_OF_POPULATION / 2)
+            _self.DIMENSION = int(config[&#39;DEFAULT&#39;][&#39;Dimension&#39;])
+            _self.UPPER_BOUND = float(config[&#39;DEFAULT&#39;][&#39;UpperBound&#39;])
+            _self.LOWER_BOUND = float(config[&#39;DEFAULT&#39;][&#39;LowerBound&#39;])
+            _self.MINIMIZE = bool(config[&#39;DEFAULT&#39;][&#39;Minimize&#39;])
+            _self.RUN_TIME = int(config[&#39;DEFAULT&#39;][&#39;RunTime&#39;])
+            _self.SHOW_PROGRESS = bool(config[&#39;REPORT&#39;][&#39;ShowProgress&#39;]==&#39;True&#39;)
+            _self.PRINT_PARAMETERS = bool(config[&#39;REPORT&#39;][&#39;PrintParameters&#39;]==&#39;True&#39;)
+            _self.RUN_INFO = bool(config[&#39;REPORT&#39;][&#39;RunInfo&#39;]==&#39;True&#39;)
+            _self.RUN_INFO_COMMANDLINE = bool(config[&#39;REPORT&#39;][&#39;CommandLine&#39;]==&#39;True&#39;)
+            _self.SAVE_RESULTS = bool(config[&#39;REPORT&#39;][&#39;SaveResults&#39;]==&#39;True&#39;)
+            _self.RESULT_REPORT_FILE_NAME = config[&#39;REPORT&#39;][&#39;ResultReportFileName&#39;]
+            _self.PARAMETER_REPORT_FILE_NAME = config[&#39;REPORT&#39;][&#39;ParameterReportFileName&#39;]
+            _self.RESULT_BY_CYCLE_FOLDER = config[&#39;REPORT&#39;][&#39;ResultByCycleFolder&#39;]
+            _self.OUTPUTS_FOLDER_NAME = str(config[&#39;REPORT&#39;][&#39;OutputsFolderName&#39;])
+            _self.RANDOM_SEED = config[&#39;SEED&#39;][&#39;RandomSeed&#39;] == &#39;True&#39;
+            _self.SEED = int(config[&#39;SEED&#39;][&#39;Seed&#39;])
+            #####SETTINGS FILE######
+
+            #####SETTINGS ARGUMENTS######
+            try:
+                opts, args = getopt.getopt(argv, &#39;hn:m:t:d:l:u:r:o:&#39;,
+                                           [&#39;help&#39;, &#39;np=&#39;, &#39;max_eval=&#39;,&#39;trial=&#39;, &#39;dim=&#39;, &#39;lower_bound=&#39;, &#39;upper_bound=&#39;, &#39;runtime=&#39;,
+                                            &#39;obj_fun=&#39;,&#39;output_folder=&#39;,&#39;file_name=&#39;,&#39;param_name=&#39;,&#39;res_cycle_folder=&#39;,&#39;show_functions&#39;])
+            except getopt.GetoptError:
+                print(&#39;Usage: ABCAlgorithm.py -h or --help&#39;)
+                sys.exit(2)
+            for opt, arg in opts:
+                if opt in (&#39;-h&#39;, &#39;--help&#39;):
+                    print(&#39;-h or --help : Show Usage&#39;)
+                    print(&#39;-n or --np : Number of Population&#39;)
+                    print(&#39;-m or --max_eval : Maximum Evaluation&#39;)
+                    #print(&#39;-t or --trial : Maximum Trial&#39;)
+                    print(&#39;-d or --dim : Dimension&#39;)
+                    print(&#39;-l or --lower_bound : Lower Bound&#39;)
+                    print(&#39;-u or --upper_bound : Upper Bound&#39;)
+                    print(&#39;-r or --runtime : Run Time&#39;)
+                    print(&#39;-o or --obj_fun : Objective Function&#39;)
+                    print(&#39;--show_functions : Show Objective Functions&#39;)
+                    print(&#39;--output_folder= [DEFAULT: Outputs]&#39;)
+                    print(&#39;--file_name= [DEFAULT: Run_Results.csv]&#39;)
+                    print(&#39;--param_name= [DEFAULT: Param_Results.csv]&#39;)
+                    print(&#39;--res_cycle_folder= [DEFAULT: ResultByCycle]&#39;)
+
+                    sys.exit()
+                elif opt in (&#39;-n&#39;, &#39;--np&#39;):
+                    _self.NUMBER_OF_POPULATION = int(arg)
+                elif opt in (&#39;-m&#39;, &#39;--max_eval&#39;):
+                    _self.MAXIMUM_EVALUATION = int(arg)
+                elif opt in (&#39;-d&#39;, &#39;--dim&#39;):
+                    _self.DIMENSION = int(arg)
+                elif opt in (&#39;-t&#39;, &#39;--trial&#39;):
+                    _self.LIMIT = int(arg)
+                elif opt in (&#39;-l&#39;, &#39;--lower_bound&#39;):
+                    _self.LOWER_BOUND = float(arg)
+                elif opt in (&#39;-u&#39;, &#39;--upper_bound&#39;):
+                    _self.UPPER_BOUND = float(arg)
+                elif opt in (&#39;-r&#39;, &#39;--runtime&#39;):
+                    _self.RUN_TIME = int(arg)
+                elif opt in (&#39;-o&#39;, &#39;--obj_fun&#39;):
+                    _self.OBJECTIVE_FUNCTION = _self.objFunctionSelector.get(arg, &#34;sphere&#34;)
+                elif opt in (&#39;--output_folder&#39;):
+                    _self.OUTPUTS_FOLDER_NAME = arg
+                elif opt in (&#39;--param_name&#39;):
+                    _self.PARAMETER_REPORT_FILE_NAME = arg
+                elif opt in (&#39;--file_name&#39;):
+                    _self.RESULT_REPORT_FILE_NAME = arg
+                elif opt in (&#39;--res_cycle_folder&#39;):
+                    _self.RESULT_BY_CYCLE_FOLDER = arg
+                elif opt in (&#39;--show_functions&#39;):
+                    print(&#34;We use deap.benchmarks functions. Available functions are listed below:&#34;)
+                    for i in _self.objFunctionSelector:
+                        print(i)
+                    sys.exit()
+            #####SETTINGS ARGUMENTS######
+
+    def user_defined_function(individual):
+        return (individual[0] - individual[1]),
+
+    #######FUNCTION_LIST######
+    objFunctionSelector = {
+        &#39;sphere&#39;: sphere,
+        &#39;rastrigin&#39;: rastrigin,
+        &#39;rosenbrock&#39;: rosenbrock,
+        &#39;rand&#39;: rand,
+        &#39;plane&#39;: plane,
+        &#39;cigar&#39;: cigar,
+        &#39;h1&#39;: h1,
+        &#39;ackley&#39;: ackley,
+        &#39;bohachevsky&#39;: bohachevsky,
+        &#39;griewank&#39;: griewank,
+        &#39;rastrigin_scaled&#39;: rastrigin_scaled,
+        &#39;rastrigin_skew&#39;: rastrigin_skew,
+        &#39;schaffer&#39;: schaffer,
+        &#39;schwefel&#39;: schwefel,
+        &#39;himmelblau&#39;: himmelblau,
+        &#39;user_defined&#39;: user_defined_function
+    }</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="ABCPython.Config.Config.objFunctionSelector"><code class="name">var <span class="ident">objFunctionSelector</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="ABCPython.Config.Config.user_defined_function"><code class="name flex">
+<span>def <span class="ident">user_defined_function</span></span>(<span>individual)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def user_defined_function(individual):
+    return (individual[0] - individual[1]),</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="ABCPython" href="index.html">ABCPython</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="ABCPython.Config.Config" href="#ABCPython.Config.Config">Config</a></code></h4>
+<ul class="">
+<li><code><a title="ABCPython.Config.Config.objFunctionSelector" href="#ABCPython.Config.Config.objFunctionSelector">objFunctionSelector</a></code></li>
+<li><code><a title="ABCPython.Config.Config.user_defined_function" href="#ABCPython.Config.Config.user_defined_function">user_defined_function</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
